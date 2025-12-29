@@ -2,7 +2,7 @@
 
 ![Crescent Layout](crescent.png)
 
-Crescent is a layout I designed to have no movement, no scissors, no lsbs, and minimal sfbs. It achieves this by limiting itself to just the home positions of all 10 fingers, and by using combos that were carefully selected to minimize sfbs.
+Crescent is a layout [ClemenPine](https://github.com/ClemenPine) designed to have no movement, no scissors, no lsbs, and minimal sfbs. It achieves this by limiting itself to just the home positions of all 10 fingers, and by using combos that were carefully selected to minimize sfbs.
 
 ## Homerow
 
@@ -32,6 +32,7 @@ Closing the terminal will exit kanata and restore your keyboard to its default s
 
 ## Special Thanks
 
+- [ClemenPine](https://github.com/ClemenPine), for creating Crescent
 - [Eve](https://github.com/Apsu), for providing inspiration for this project
 - Valorance, for providing the name
 
