@@ -1,0 +1,230 @@
+// Crescent chord layout for ZMK
+//
+// A 10-key chording layout: C R S T (left hand), Space N (thumbs), A E U I (right hand).
+//
+// Prerequisites:
+//   - zmk-helpers for ZMK_COMBO and key-label conventions
+//   - Define a layer called CRESCENT and assign it a layer number before including
+//   - Include key-labels for your keyboard
+//
+// Usage:
+//   #include <zmk-helpers/helper.h>
+//   #include <zmk-helpers/key-labels/34.h>
+//   #define CRESCENT 0
+//   #include <zmk-crescent/crescent.dtsi>
+
+#include <zmk-crescent/adapters/zmk_helpers.h>
+
+#ifndef CRESCENT
+#error "A layer CRESCENT must be defined before including crescent.dtsi"
+#endif
+
+#ifndef CRESCENT_COMBO_TERM
+#define CRESCENT_COMBO_TERM 50
+#endif
+
+// Shorthand position aliases (lowercase to avoid clashes with ZMK keycodes)
+#define CRE_c CRESCENT_POS_C
+#define CRE_r CRESCENT_POS_R
+#define CRE_s CRESCENT_POS_S
+#define CRE_t CRESCENT_POS_T
+#define CRE_p CRESCENT_POS_SPACE
+#define CRE_n CRESCENT_POS_N
+#define CRE_a CRESCENT_POS_A
+#define CRE_e CRESCENT_POS_E
+#define CRE_u CRESCENT_POS_U
+#define CRE_i CRESCENT_POS_I
+
+// ============================================================================
+// Single keys (base positions)
+// ============================================================================
+
+ZMK_COMBO(cre_c,  &kp C,     CRE_c,                  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_r,  &kp R,     CRE_r,                  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_s,  &kp S,     CRE_s,                  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_t,  &kp T,     CRE_t,                  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_p,  &kp SPACE, CRE_p,                  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_n,  &kp N,     CRE_n,                  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_a,  &kp A,     CRE_a,                  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_e,  &kp E,     CRE_e,                  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_u,  &kp U,     CRE_u,                  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_i,  &kp I,     CRE_i,                  CRESCENT, CRESCENT_COMBO_TERM)
+
+// ============================================================================
+// 2-key combos
+// ============================================================================
+
+// C + ...
+ZMK_COMBO(cre_cr,  &kp W,     CRE_c CRE_r,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cs,  &kp F,     CRE_c CRE_s,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ct,  &kp G,     CRE_c CRE_t,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cn,  &kp Q,     CRE_c CRE_n,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ca,  &kp SQT,   CRE_c CRE_a,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ce,  &kp HASH,  CRE_c CRE_e,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cu,  &kp Y,     CRE_c CRE_u,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ci,  &kp P,     CRE_c CRE_i,           CRESCENT, CRESCENT_COMBO_TERM)
+
+// R + ...
+ZMK_COMBO(cre_rs,  &kp X,     CRE_r CRE_s,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_rt,  &kp J,     CRE_r CRE_t,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_rn,  &kp L,     CRE_r CRE_n,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ra,  &kp EXCL,  CRE_r CRE_a,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_re,  &kp AT,    CRE_r CRE_e,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ru,  &kp UNDER, CRE_r CRE_u,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ri,  &kp COMMA, CRE_r CRE_i,           CRESCENT, CRESCENT_COMBO_TERM)
+
+// S + ...
+ZMK_COMBO(cre_st,  &kp D,     CRE_s CRE_t,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_sn,  &kp Z,     CRE_s CRE_n,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_sa,  &kp GRAVE, CRE_s CRE_a,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_se,  &kp BSPC,  CRE_s CRE_e,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_su,  &kp V,     CRE_s CRE_u,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_si,  &kp B,     CRE_s CRE_i,           CRESCENT, CRESCENT_COMBO_TERM)
+
+// T + ...
+ZMK_COMBO(cre_tn,  &kp M,     CRE_t CRE_n,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ta,  &kp ENTER, CRE_t CRE_a,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_te,  &kp TAB,   CRE_t CRE_e,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_tu,  &kp K,     CRE_t CRE_u,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ti,  &kp SLASH, CRE_t CRE_i,           CRESCENT, CRESCENT_COMBO_TERM)
+
+// N + ...
+ZMK_COMBO(cre_na,  &kp LPAR,  CRE_n CRE_a,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ne,  &kp RPAR,  CRE_n CRE_e,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_nu,  &kp H,     CRE_n CRE_u,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ni,  &kp QMARK, CRE_n CRE_i,           CRESCENT, CRESCENT_COMBO_TERM)
+
+// A + ...
+ZMK_COMBO(cre_ae,  &kp O,     CRE_a CRE_e,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_au,  &kp MINUS, CRE_a CRE_u,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ai,  &kp DOT,   CRE_a CRE_i,           CRESCENT, CRESCENT_COMBO_TERM)
+
+// E + ...
+ZMK_COMBO(cre_eu,  &kp DQT,   CRE_e CRE_u,           CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ei,  &kp COLON, CRE_e CRE_i,           CRESCENT, CRESCENT_COMBO_TERM)
+
+// U + I
+ZMK_COMBO(cre_ui,  &kp SEMI,  CRE_u CRE_i,           CRESCENT, CRESCENT_COMBO_TERM)
+
+// ============================================================================
+// 3-key combos (left-hand base + right-hand key)
+// ============================================================================
+
+// R + S + ...
+ZMK_COMBO(cre_rsn, &kp AMPS,  CRE_r CRE_s CRE_n,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_rsa, &kp LEFT,  CRE_r CRE_s CRE_a,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_rse, &kp DOWN,  CRE_r CRE_s CRE_e,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_rsu, &kp UP,    CRE_r CRE_s CRE_u,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_rsi, &kp RIGHT, CRE_r CRE_s CRE_i,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// S + T + ...
+ZMK_COMBO(cre_stn, &kp RBRC,  CRE_s CRE_t CRE_n,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_sta, &kp N7,    CRE_s CRE_t CRE_a,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ste, &kp N8,    CRE_s CRE_t CRE_e,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_stu, &kp N9,    CRE_s CRE_t CRE_u,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_sti, &kp DLLR,  CRE_s CRE_t CRE_i,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// R + T + ...
+ZMK_COMBO(cre_rtn, &kp TILDE, CRE_r CRE_t CRE_n,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_rta, &kp N4,    CRE_r CRE_t CRE_a,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_rte, &kp N5,    CRE_r CRE_t CRE_e,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_rtu, &kp N6,    CRE_r CRE_t CRE_u,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_rti, &kp PRCNT, CRE_r CRE_t CRE_i,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// C + T + ...
+ZMK_COMBO(cre_ctn, &kp LBRC,  CRE_c CRE_t CRE_n,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cta, &kp N1,    CRE_c CRE_t CRE_a,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cte, &kp N2,    CRE_c CRE_t CRE_e,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ctu, &kp N3,    CRE_c CRE_t CRE_u,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cti, &kp N0,    CRE_c CRE_t CRE_i,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// C + R + ...
+ZMK_COMBO(cre_crn, &kp PIPE,  CRE_c CRE_r CRE_n,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cra, &kp STAR,  CRE_c CRE_r CRE_a,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cre, &kp PLUS,  CRE_c CRE_r CRE_e,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cru, &kp LT,    CRE_c CRE_r CRE_u,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cri, &kp GT,    CRE_c CRE_r CRE_i,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// C + S + ...
+ZMK_COMBO(cre_csn, &kp BSLH,  CRE_c CRE_s CRE_n,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_csa, &kp CARET, CRE_c CRE_s CRE_a,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_cse, &kp EQUAL, CRE_c CRE_s CRE_e,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_csu, &kp LBKT,  CRE_c CRE_s CRE_u,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_csi, &kp RBKT,  CRE_c CRE_s CRE_i,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// ============================================================================
+// 3-key combos (right-hand base + left-hand key) - F-keys
+// ============================================================================
+
+// A + E + ...
+ZMK_COMBO(cre_aec, &kp F1,    CRE_a CRE_e CRE_c,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_aer, &kp F2,    CRE_a CRE_e CRE_r,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_aes, &kp F3,    CRE_a CRE_e CRE_s,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_aet, &kp F4,    CRE_a CRE_e CRE_t,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// A + U + ...
+ZMK_COMBO(cre_auc, &kp F5,    CRE_a CRE_u CRE_c,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_aur, &kp F6,    CRE_a CRE_u CRE_r,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_aus, &kp F7,    CRE_a CRE_u CRE_s,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_aut, &kp F8,    CRE_a CRE_u CRE_t,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// A + I + ...
+ZMK_COMBO(cre_aic, &kp F9,    CRE_a CRE_i CRE_c,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_air, &kp F10,   CRE_a CRE_i CRE_r,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ais, &kp F11,   CRE_a CRE_i CRE_s,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_ait, &kp F12,   CRE_a CRE_i CRE_t,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// ============================================================================
+// 3-key combos (right-hand base + left-hand key) - Esc / Delete / Insert
+// ============================================================================
+
+// N + I + ...
+ZMK_COMBO(cre_nit, &kp ESC,   CRE_n CRE_i CRE_t,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_nis, &kp DEL,   CRE_n CRE_i CRE_s,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_nir, &kp INS,   CRE_n CRE_i CRE_r,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// ============================================================================
+// 3-key combos (right-hand base + left-hand key) - Navigation
+// (Mirrored HJKL: C=End, R=PgUp, S=PgDn, T=Home)
+// ============================================================================
+
+// U + I + ...
+ZMK_COMBO(cre_uit, &kp HOME,  CRE_u CRE_i CRE_t,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_uis, &kp PG_DN, CRE_u CRE_i CRE_s,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_uir, &kp PG_UP, CRE_u CRE_i CRE_r,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_uic, &kp END,   CRE_u CRE_i CRE_c,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// ============================================================================
+// 3-key combos (right-hand base + left-hand key) - Modifiers
+// ============================================================================
+
+// E + U + modifier key (one-shot sticky keys)
+ZMK_COMBO(cre_euc, &sk LCTRL, CRE_e CRE_u CRE_c,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_eur, &sk LALT,  CRE_e CRE_u CRE_r,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_eus, &sk LSHFT, CRE_e CRE_u CRE_s,    CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_eut, &sk LGUI,  CRE_e CRE_u CRE_t,    CRESCENT, CRESCENT_COMBO_TERM)
+
+// ============================================================================
+// 4-key combos - Modifier combinations (one-shot sticky)
+// ============================================================================
+
+ZMK_COMBO(cre_eucr, &sk LC(LALT),            CRE_e CRE_u CRE_c CRE_r,        CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_eucs, &sk LC(LSHFT),           CRE_e CRE_u CRE_c CRE_s,        CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_euct, &sk LC(LGUI),            CRE_e CRE_u CRE_c CRE_t,        CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_eurs, &sk LA(LSHFT),           CRE_e CRE_u CRE_r CRE_s,        CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_eurt, &sk LA(LGUI),            CRE_e CRE_u CRE_r CRE_t,        CRESCENT, CRESCENT_COMBO_TERM)
+
+// ============================================================================
+// 5-key combos - Triple modifier combinations (one-shot sticky)
+// ============================================================================
+
+ZMK_COMBO(cre_eucrs, &sk LC(LA(LSHFT)),      CRE_e CRE_u CRE_c CRE_r CRE_s,  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_eucrt, &sk LC(LA(LGUI)),       CRE_e CRE_u CRE_c CRE_r CRE_t,  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_eucst, &sk LC(LS(LGUI)),       CRE_e CRE_u CRE_c CRE_s CRE_t,  CRESCENT, CRESCENT_COMBO_TERM)
+ZMK_COMBO(cre_eurst, &sk LA(LS(LGUI)),       CRE_e CRE_u CRE_r CRE_s CRE_t,  CRESCENT, CRESCENT_COMBO_TERM)
+
+// ============================================================================
+// 6-key combo - All four modifiers (one-shot sticky)
+// ============================================================================
+
+ZMK_COMBO(cre_eucrst, &sk LC(LA(LS(LGUI))),  CRE_e CRE_u CRE_c CRE_r CRE_s CRE_t, CRESCENT, CRESCENT_COMBO_TERM)

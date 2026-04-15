@@ -25,30 +25,30 @@ LETTERS = (
 )
 
 
-def get_text(corpus = "monkeyracer.txt"):
+def get_text(corpus = "quotes/monkeyracer.txt"):
     with open(corpus, "r") as f:
         text = f.read()
 
     for old, new in REPLACEMENTS.items():
         text = text.replace(old, new)
-    
+
     return text
 
-def get_pairs(corpus = "monkeyracer.txt"):
+def get_pairs(corpus = "quotes/monkeyracer.txt"):
     text = get_text(corpus)
 
     res = Counter()
     for gram in windowed(text, 2):
         if not all(x in LETTERS for x in gram):
             continue
-        
+
         res.update([gram[::-1]])
-        res.update([gram]) 
+        res.update([gram])
 
     return res
 
 
-def get_skips(corpus = "monkeyracer.txt"):
+def get_skips(corpus = "quotes/monkeyracer.txt"):
     text = get_text(corpus)
 
     res = Counter()
@@ -56,13 +56,13 @@ def get_skips(corpus = "monkeyracer.txt"):
         gram = (gram[0], gram[-1])
         if not all(x in LETTERS for x in gram):
             continue
-        
+
         res.update([gram[::-1]])
-        res.update([gram]) 
+        res.update([gram])
 
     return res
 
-def get_monograms(corpus = "monkeyracer.txt"):
+def get_monograms(corpus = "quotes/monkeyracer.txt"):
     text = get_text(corpus)
     res = Counter(text)
     # res = {k: v for k, v in res.items() if k in LETTERS}
@@ -113,7 +113,7 @@ def get_score(buckets, pairs):
     score = 0
     for i in range(SIZE):
         bucket = [buckets[SIZE][i]] + buckets[i][:i] + buckets[i][i + 1:]
-        
+
         for combo in combinations(bucket, 2):
             score += pairs.get(combo, 0)
 
@@ -123,7 +123,7 @@ def get_fingers(buckets, monograms):
     res = [0] * SIZE
     for i in range(SIZE):
         bucket = [buckets[SIZE][i]] + buckets[i][:i] + buckets[i][i + 1:]
-        
+
         for char in bucket:
             res[i] += monograms.get(char, 0)
 
@@ -133,7 +133,7 @@ def get_top(buckets, pairs):
     res = {}
     for i in range(SIZE):
         bucket = [buckets[SIZE][i]] + buckets[i][:i] + buckets[i][i + 1:]
-        
+
         for combo in combinations(bucket, 2):
             res["".join(combo)] = pairs.get(combo, 0)
 
@@ -144,7 +144,7 @@ def main():
     combos = list(combinations(range(SIZE), 2))
     if not HOMEROW:
         combos += [(SIZE, x) for x in range(SIZE)]
-    
+
     swaps = list(combinations(combos, 2))
 
     buckets = make_layout(homerow=HOMEROW, shuffle=True)

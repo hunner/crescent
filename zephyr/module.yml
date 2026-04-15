@@ -1,0 +1,4 @@
+name: zmk-crescent
+build:
+    settings:
+        dts_root: zmk
